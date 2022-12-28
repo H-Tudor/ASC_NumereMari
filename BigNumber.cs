@@ -262,79 +262,67 @@ namespace ASC_NumereMari {
 		}
 
 		//// Multiplication by Iterative Addition
-		//public static BigNumber operator *(BigNumber a, BigNumber b) {
-		//	BigNumber aTemp = a.Abs(), bTemp = b.Abs();
-		//	if(a == ZERO || b == ZERO) return ZERO;
-
-		//	sbyte sign = (sbyte)(a.Sign * b.Sign);
-
-		//	BigNumber k = ZERO, p = ZERO;
-
-		//	for(k = ONE; k < bTemp; k += ONE) {
-		//		p += aTemp;
-		//	}
-
-		//	p.Sign = sign;
-
-		//	return p.Trim();
-		//}
-
 		public static BigNumber operator *(BigNumber a, BigNumber b) {
 			if(a == ZERO || b == ZERO) return ZERO;
 			if(b == ONE) return a;
 			if(a == ONE) return b;
 
+			BigNumber aTemp = a.Abs(), bTemp = b.Abs();
+			if(a == ZERO || b == ZERO) return ZERO;
+
 			sbyte sign = (sbyte)(a.Sign * b.Sign);
-			byte[] temp = new byte[a.Number.Length + b.Number.Length];
 
-			int tempProd = 0, tempSum = 0;
-			sbyte carryProd = 0, carrySum = 0;
-			int maxPos = 0;
+			BigNumber k = ZERO, p = ZERO;
 
-			/*
-					99 *
-					99
-					--
-					81
-				   81
-				  81
-			     81
-			
-				   891
-				  891
-				 -----
-				  9801
-			 
-			 */
-
-			for(int i = 0; i < b.Number.Length + 1; i++) {
-				for(int j = 0; j < a.Number.Length; j++) {
-					if(i == b.Number.Length) {
-						temp[maxPos + 1] = (byte)(carryProd + carrySum);
-						break;
-					}
-					tempProd = b.Number[i] * a.Number[j];
-					tempProd += carryProd;
-					carryProd = (sbyte)(tempProd / 10);
-
-					tempSum = temp[i + j] + tempProd % 10 + carrySum;
-
-					if(i + j > maxPos) maxPos = i + j;
-
-					if(tempSum < 10) {
-						carrySum = 0;
-						temp[i + j] = (byte)tempSum;
-					} else {
-						if(tempSum > 9) {
-							carrySum = 1;
-							temp[i + j] = (byte)(tempSum - 10);
-						}
-					}
-				}
+			for(k = ONE; k < bTemp; k += ONE) {
+				p += aTemp;
 			}
 
-			return new BigNumber(temp, sign).Trim();
+			p.Sign = sign;
+
+			return p.Trim();
 		}
+
+		//public static BigNumber operator *(BigNumber a, BigNumber b) {
+		//	if(a == ZERO || b == ZERO) return ZERO;
+		//	if(b == ONE) return a;
+		//	if(a == ONE) return b;
+
+		//	sbyte sign = (sbyte)(a.Sign * b.Sign);
+		//	byte[] temp = new byte[a.Number.Length + b.Number.Length];
+
+		//	int tempProd = 0, tempSum = 0;
+		//	sbyte carryProd = 0, carrySum = 0;
+		//	int maxPos = 0;
+
+		//	for(int i = 0; i < b.Number.Length + 1; i++) {
+		//		for(int j = 0; j < a.Number.Length; j++) {
+		//			if(i == b.Number.Length) {
+		//				temp[maxPos + 1] = (byte)(carryProd + carrySum);
+		//				break;
+		//			}
+		//			tempProd = b.Number[i] * a.Number[j];
+		//			tempProd += carryProd;
+		//			carryProd = (sbyte)(tempProd / 10);
+
+		//			tempSum = temp[i + j] + tempProd % 10 + carrySum;
+
+		//			if(i + j > maxPos) maxPos = i + j;
+
+		//			if(tempSum < 10) {
+		//				carrySum = 0;
+		//				temp[i + j] = (byte)tempSum;
+		//			} else {
+		//				if(tempSum > 9) {
+		//					carrySum = 1;
+		//					temp[i + j] = (byte)(tempSum - 10);
+		//				}
+		//			}
+		//		}
+		//	}
+
+		//	return new BigNumber(temp, sign).Trim();
+		//}
 
 		public static BigNumber operator /(BigNumber a, BigNumber b) {
 			BigNumber aTemp = a.Abs(), bTemp = b.Abs();

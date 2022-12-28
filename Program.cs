@@ -48,48 +48,32 @@ namespace ASC_NumereMari {
 
 			bool ok, tc ;
 
-			//ok = true;
-			//Console.WriteLine("Addition");
-			//for(int i = 0; i < TestCasesAddition.GetLength(0); i++) {
-			//	tc = TestCasesAddition[i, 0] + TestCasesAddition[i, 1] == TestCasesAddition[i, 2];
-			//	ok = !tc ? tc : ok;
-			//	Console.WriteLine($"Test #{i + 1}: {TestCasesAddition[i, 0] + TestCasesAddition[i, 1]}: {TestCasesAddition[i, 2]} => {tc}");
-			//}
-			//Console.WriteLine($"Addition: {(ok ? "Passed" : "Failed")} \r\n");
+			ok = true;
+			Console.WriteLine("Addition");
+			for(int i = 0; i < TestCasesAddition.GetLength(0); i++) {
+				tc = TestCasesAddition[i, 0] + TestCasesAddition[i, 1] == TestCasesAddition[i, 2];
+				ok = !tc ? tc : ok;
+				Console.WriteLine($"Test #{i + 1}: {TestCasesAddition[i, 0] + TestCasesAddition[i, 1]}: {TestCasesAddition[i, 2]} => {tc}");
+			}
+			Console.WriteLine($"Addition: {(ok ? "Passed" : "Failed")} \r\n");
 
-			//ok = true;
-			//Console.WriteLine("Subtraction");
-			//for(int i = 0; i < TestCasesSubtraction.GetLength(0); i++) {
-			//	tc = TestCasesSubtraction[i, 0] - TestCasesSubtraction[i, 1] == TestCasesSubtraction[i, 2];
-			//	ok = !tc ? tc : ok;
-			//	Console.WriteLine($"Test #{i + 1}: {TestCasesSubtraction[i, 0] - TestCasesSubtraction[i, 1]}: {TestCasesSubtraction[i, 2]} => {tc}");
-			//}
-			//Console.WriteLine($"Subtraction: {(ok ? "Passed" : "Failed")} \r\n");
+			ok = true;
+			Console.WriteLine("Subtraction");
+			for(int i = 0; i < TestCasesSubtraction.GetLength(0); i++) {
+				tc = TestCasesSubtraction[i, 0] - TestCasesSubtraction[i, 1] == TestCasesSubtraction[i, 2];
+				ok = !tc ? tc : ok;
+				Console.WriteLine($"Test #{i + 1}: {TestCasesSubtraction[i, 0] - TestCasesSubtraction[i, 1]}: {TestCasesSubtraction[i, 2]} => {tc}");
+			}
+			Console.WriteLine($"Subtraction: {(ok ? "Passed" : "Failed")} \r\n");
 
-			//ok = true;
-			//Console.WriteLine("Multipication");
-			//for(int i = 0; i < TestCasesMultiplication.GetLength(0); i++) {
-			//	tc = TestCasesMultiplication[i, 0] * TestCasesMultiplication[i, 1] == TestCasesMultiplication[i, 2];
-			//	ok = !tc ? tc : ok;
-			//	Console.WriteLine($"Test #{i + 1}: {TestCasesMultiplication[i, 0] * TestCasesMultiplication[i, 1]}: {TestCasesMultiplication[i, 2]} => {tc}");
-			//}
-			//Console.WriteLine($"Multipication: {(ok ? "Passed" : "Failed")} \r\n");
-
-
-
-
-
-
-
-
-			Console.WriteLine($"Test: {TestCasesMultiplication[8, 0] * TestCasesMultiplication[8, 1]}: {TestCasesMultiplication[8, 2]} => {TestCasesMultiplication[8, 0] * TestCasesMultiplication[8, 1] == TestCasesMultiplication[8, 2]}");
-
-
-
-
-
-
-
+			ok = true;
+			Console.WriteLine("Multipication");
+			for(int i = 0; i < TestCasesMultiplication.GetLength(0); i++) {
+				tc = TestCasesMultiplication[i, 0] * TestCasesMultiplication[i, 1] == TestCasesMultiplication[i, 2];
+				ok = !tc ? tc : ok;
+				Console.WriteLine($"Test #{i + 1}: {TestCasesMultiplication[i, 0] * TestCasesMultiplication[i, 1]}: {TestCasesMultiplication[i, 2]} => {tc}");
+			}
+			Console.WriteLine($"Multipication: {(ok ? "Passed" : "Failed")} \r\n");
 
 			Console.ReadKey();
 		}
